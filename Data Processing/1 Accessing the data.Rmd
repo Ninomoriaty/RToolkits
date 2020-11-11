@@ -1,0 +1,152 @@
+---
+title: "Accessing the data"
+author: "Nino Moriaty"
+output: html_notebook
+---
+
+
+# Inspect your data
+```{r}
+# show the class of your object
+class(var)
+# show the dimension of a variable, especially for data frame and data table.
+dim(df)
+```
+
+
+# Data Types / Mode
+## Numeric data (Integer, Float and Double and Complex (imaginary numbers) )
+## Character data / String
+## Logical data
+## Raw (bytes).
+
+
+
+# Data Structure / Class
+## Vector (1D)
+Tips: One vector contains one data type/mode, including numeric data, character data, or logical data
+Tips: Scalars are one-element vectors. However, they are mostly settled as constrants in R language.
+```{r}
+# Create a vector
+vector1 <- c(1, 2, 3)
+vector2 <- c(0, 1, 2)
+vector3 <- c(0, 0, 1)
+
+# transform
+
+
+# Refer to elements of a vector using a numeric vector
+vector1[1] # Tips: start from 1 rather than 0
+vector1[1:2]
+vector1[c(1:2)]
+vector1[c(1,2,3)] 
+
+
+```
+
+## Factors (Special)
+Tips: factors store nominal or ordinal variables
+
+## Matrix (2D)
+```{r}
+# Create Matrices
+matrix1 <- matrix(vector1, vector2)
+matrix1 <- matrix(1:20, nrow=5, ncol=4)
+
+# transform the data sturcture
+as.matrix() # plus a as. before the type of data structrue
+matrix()
+
+
+```
+
+## Array (Multi-dimensions)
+```{r}
+# Create Arrays
+array1 <- array(vector1, vector2, vector3)
+
+
+```
+
+## Data Frame (2.5D)
+Tips: `df` can store all kinds of *data types*
+```{r}
+# Create data frame
+df <- data.frame()
+df <- data.frame(matrix1, stringsAsFactors = FALSE) # stringAsFactors sometimes cause errors when reading strings in the df 
+
+# transformation
+df <- as.data.frame(x)
+
+# Create an emplty data frame with colnames or rownames
+data.frame(matrix(nrow=2,ncol=2))
+
+# assign rownames and colnames to df
+rownames(df) <- c("")
+colnames(df) <- c("")
+```
+
+## Data Table
+Tips: `dt` is a special data frame for `dplyr`
+```{r}
+data.table()
+```
+
+## List
+Tips: `List` can contain all kins of *data structures*
+```{r}
+# Create a list
+ls1 <- list(vector1, matrix1)
+
+# Extract factors in the list
+ls1[[1]]
+ls1
+
+#
+
+
+```
+
+## Define your own class
+Tips: More information could be seen in the R Package Section in the Wiznote.
+
+
+# Input data
+## Files
+```{r}
+# Refer to other scripts
+source("pahtname") # if the file is in the current workspace, the filename could be used directly.
+
+# Input data
+table <- read.table(file) # data
+
+
+# data from package
+iris <- data("Arthritis") # from pkg "vcd"
+
+
+```
+
+## Website
+
+
+
+
+# Annotating datasets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

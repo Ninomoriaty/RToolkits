@@ -1,0 +1,229 @@
+---
+title: "Variables, Basic Operations, Control Structure, Customise Function, Batch Mode in Shell"
+author: "Nino Moriaty"
+output: html_notebook
+---
+
+# Interpreter Operations
+```{r}
+# exit
+q()
+
+```
+
+
+# Help issues
+```{r}
+# general help
+help.start() # homepage
+
+# Help desk
+help(sort) # search in function names
+help(options) # Provides information about available options.
+help(package="package_name") # datasets ang functions
+?sort
+?"+" # like Haskell. You will need to use "" to figure out the operator rather than use the function of operators.
+
+help.search(sort)# search in function names, descriptions, arguments etc.
+??sort 
+
+apropos(sort, mode = "function") # list all functions with the string in their names
+
+RSiteSearch(sort) # search online manuals and R-Help discussion list
+
+
+# Vignettes
+vignette() # Lists all available vignettes for currently installed packages
+vignette("speed") # display the vignettes for topics in the arguments
+
+
+# Examples
+example(sort)
+
+
+# Demo
+demo()
+demo(Hershey)
+
+
+# Dataset attached with packages
+data() # Lists all available example datasets contained in currently loaded packages
+data(package = "pkgname")
+
+```
+
+# Customising the startup environment
+Tips: More details: "Appendix B: Invoking R" chapter in the book "Introduction to R" in https://cran.r-project.org/manuals.html
+
+**Cc**:
+1. `Rprofile.site`: a site-initialization file
+![Screenshot from 2020-10-09 17-40-44.png](https://i.loli.net/2020/10/10/F6ar3xewzP1GYgH.png)
+    1. 
+2. `.Rprofile`: a directory-initialization file 
+
+**Commands**: 
+```{r}
+# How to configure the startup environment
+help(Startup) 
+
+# get environemnt variable information
+## Tips: Sys is not the same as sys
+Sys.getenv() # List all environment variables
+Sys.getenv("R_HOME") # The environment variable containing the home directory of the R environment/pathway.
+Sys.getenv("HOME") # The settled workspace environment variable for R project
+
+# Execute before or after the R session 
+.First() # load pkgs that you commonly used
+.Last() # provide any cleanup activities, including archiving command histories, program output, and data files
+
+# set R options
+
+# specify a working directory
+
+# load commonly used packages
+
+# load user-written functions
+
+# set a default CRAN download site
+
+# others
+
+
+```
+
+
+
+# Manage your packages
+```{r}
+# library
+libPaths() # figure out the dir where stores packages
+library() # show the package lists in diffferent dirs
+library(rmarkdown) # load particular packages
+
+# list packages
+search() # lists packages are loaded and ready to use.
+installed.packages() # list the packages you have, along with their version numbers, dependencies, and other information.
+
+# install packages 
+install.packages() # show the CRAN mirror sites.
+install.packages("package_names")
+
+# update packages
+# Tips: it would be better to use a pkg management system to update pkgs.
+update.packages() # update all pkgs
+ 
+
+```
+
+
+
+# Manage the Workspace and Working Directory
+```{r}
+# Get the current working directory
+getwd()
+
+# create a directory
+dir.create(path = "pathname")
+
+# set the current working directory
+setwd("mydirectory") # Tips: The dir should be already existing.
+
+# Lists the objects in the current workspace.
+ls() 
+
+# Removes (deletes) one or more objects.
+rm(objectlist) 
+
+# Lets you view or set current options.
+options()
+options(digits = 3) # set the digits after the decimal place
+
+# Displays your last n commands (default = 25).
+history(n) 
+savehistory("comnand_history_file") # Saves the commands history to myfile (default = .Rhistory).
+loadhistory("comnand_history_file") # Reloads a command’s history (default = .Rhistory).
+
+# Save the Workspace
+save.image("my_workspace_file") # Saves the workspace to my_workspace_file (default = .RData).
+save(objectlist, file="my_workspace_file") # Saves specific objects to a file.
+load("my_workspace_file") # Load a workspace into the current session.
+q() # Quits R. You’ll be prompted to save the workspace. 
+
+# Tips: if the 
+```
+
+
+
+# Mathematical operations and variables
+```{r}
+# most basic four operators
+1+1.5
+1-1.5
+1*2
+16/7
+
+# cal-related functions
+ages <- c(1,2,3,4,4,5,6)
+sum(ages)
+mean(ages)
+sd(ages) # standard error
+
+max(ages)
+min(ages)
+range(ages)
+
+sort(ages)
+unique(ages)
+
+2*sqrt(2) # Attention: not Julia scientific expression however a more statistic way
+
+# sumarise some statistics results: min, 1st quantifile, median, mean, 3rd quantifile, max
+summary(object = obj1)
+
+
+
+
+
+```
+
+
+# Variable Assignment
+```{r}
+# Assign a value
+i <- 0 # general
+
+# in loops
+upToTen <- function(x){ # temp var
+  for (x in c(0,10)){
+  y <- x+1
+  }
+  print(y)
+}
+
+upToTen(i) # use the actual var to process the function
+
+# Delete a variable
+remove(i)
+rm(i)
+```
+
+
+# Control Structure
+## `for` loops
+
+
+# Define Functions and Customisation
+
+
+
+# Other Tips and Details about R Programming
+1. By convention, script filenames end with an .R extension, but this isn’t required.
+
+
+# Batch Mode in Shell
+Tips: More details: "Appendix B: Invoking R" chapter in the book "Introduction to R" in https://cran.r-project.org/manuals.html
+```{bash}
+R CMD BATCH options infile outfile
+```
+
+
